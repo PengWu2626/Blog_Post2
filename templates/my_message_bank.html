@@ -1,0 +1,25 @@
+<!-- my_message_bank.html template extend from base.html-->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}All Messages{% endblock %}</h2>
+{% endblock %}
+
+{% block content %} 
+
+<!-- create the message bank table-->
+<table class = "table">
+    <tr class ="table_header">
+        <th>Number</th> <th>Message</th> <th>Name</th>
+    </tr>
+    <!-- loop over each row in our table-->
+    {% for row in allmessages%}
+    <tr class ="table_row">
+        <!-- loop each element in the row-->
+        {% for element in row %}
+        <td class ="table_element">{{element}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

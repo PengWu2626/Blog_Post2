@@ -1,0 +1,19 @@
+<!-- base.html template-->
+<!doctype html>
+<title>{% block title %}{% endblock %} Simple Message Bank</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1 id = "main_title">A Simple Message Bank</h1>
+  <!-- <b>Navigation:</b> -->
+  <ul>
+    <li><a href="{{ url_for('main') }}">Submit a Message</a></li>
+    <li><a href="{{ url_for('view') }}">View Messages</a></li>
+    <li><a href="{{ url_for('my_message_bank') }}">Message Bank Record</a></li>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>

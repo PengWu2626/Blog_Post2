@@ -1,0 +1,32 @@
+<!-- view.html template extend base.html-->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Some Cool Messages{% endblock %}</h1>
+{% endblock %}
+
+{% block content %} 
+  <!-- I find some formatting from here --> 
+  <!--https://www.digitalocean.com/community/tutorials/how-to-use-templates-in-a-flask-application -->
+    <!-- using inline CSS-->
+    <div style="width: 50%; margin: auto">
+      <!-- loop over random messages-->
+      {% for i in randmessages %}
+        <!-- some style for formatting-->
+        {% if loop.index % 2 == 0 %}
+            {% set bg_color = '#e6f9ff' %}
+        {% else %}
+            {% set bg_color = '#eee' %}
+        {% endif %}
+        <!-- using inline CSS-->
+        <div style="padding: 5px; background-color: {{ bg_color }}; margin: 20px">
+            <p>#{{ loop.index }}</p>
+            <!-- get message--> <!-- using inline CSS-->
+            <p style="font-size: 20px">{{ i[0] }}</p>
+            <small>
+              <!-- get name-->
+              <p>- {{ i[1] }}</p>
+            </small>
+        </div>
+  {% endfor %}
+{% endblock %}

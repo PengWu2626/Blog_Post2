@@ -1,0 +1,39 @@
+<!-- submit.html template extend from base.html-->
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Submit{% endblock %}</h2>
+{% endblock %}
+
+{% block content %} 
+
+  <form method="post">
+    <label for="message">Your message:</label>
+    <br>
+    <input type="text" name="message" id="message" placeholder="Enter your message here.">
+    <br>
+    <label for="handle">Your name or handle:</label>
+    <br>
+    <input type="text" name="handle" id="handle" placeholder="Enter your name here.">
+    <br>
+    <input type="submit" value="Submit message">
+  </form>
+
+  <!-- add some messages after the user submits the message and name -->
+  <form method="post">
+    <section class = see_something>
+      {% if handle %}
+      <br>
+      <br>
+       <b>Hello, {{handle}}</b>
+       <br>
+       <b>Do you want to see something I like?</b>
+       <br>
+       <!-- Adding link to the button on the onclick event -->
+       <button type="button" onclick="window.location.href='{{ url_for('mydog')}}';">Yes </button>
+       <!-- Adding link to the button on the onclick event -->
+       <button type="button" onclick="window.location.href='{{ url_for('main')}}';">No </button>
+       {% endif %}
+    </section>
+    </form>
+{% endblock %}
